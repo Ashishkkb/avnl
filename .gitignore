@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Production & runtime
+*.log
+.runlog
+.tsbuildinfo
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment
+.env
+.env*.local
+*.pem
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Coverage / tests
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+*.tgz
+.npm
