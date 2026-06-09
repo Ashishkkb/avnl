@@ -13,15 +13,6 @@ const usefulLinks: { label: string; href: string }[] = [
   { label: "Help", href: "/help" },
   { label: "Contact Us", href: "/connect/contact" },
   { label: "Feedback", href: "/connect/grievances" },
-  { label: "RTI", href: "/connect/rti" },
-  { label: "Public Grievances", href: "/connect/grievances" },
-  { label: "Tenders", href: "/offerings/tenders" },
-  { label: "Vacancies / Careers", href: "/offerings/careers" },
-  { label: "Vigilance / PIDPI", href: "/connect/vigilance" },
-  { label: "Vendor Registration (OVRA)", href: "/connect/ovra" },
-  { label: "Annual Reports", href: "/documents/annual-reports" },
-  { label: "Acts & Policies", href: "/documents/acts-policies" },
-  { label: "Accessibility Statement", href: "/accessibility" },
 ];
 
 const socials: { name: SocialName; label: string; href: string }[] = [
