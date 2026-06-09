@@ -1,13 +1,14 @@
 "use client";
 import { useA11y, useT } from "./A11yProvider";
+import { Icon, type IconName } from "./icons";
 
 export function AccessibilityBar() {
   const a = useA11y();
   const t = useT();
-  const themes: { v: "light" | "dark" | "hc"; label: string; icon: string }[] = [
-    { v: "light", label: t("light"), icon: "☀" },
-    { v: "dark", label: t("dark"), icon: "☾" },
-    { v: "hc", label: t("hc"), icon: "◐" },
+  const themes: { v: "light" | "dark" | "hc"; label: string; icon: IconName }[] = [
+    { v: "light", label: t("light"), icon: "sun" },
+    { v: "dark", label: t("dark"), icon: "moon" },
+    { v: "hc", label: t("hc"), icon: "contrast" },
   ];
   return (
     <div className="flex items-center gap-2 text-xs" role="toolbar" aria-label={t("accessibility")}>
@@ -41,8 +42,8 @@ export function AccessibilityBar() {
             aria-checked={a.theme === th.v}
             role="radio"
             title={th.label}
-            className={`w-7 h-7 grid place-items-center hover:bg-[var(--color-paper)] ${a.theme === th.v ? "bg-[var(--color-paper)] font-bold" : ""}`}
-          >{th.icon}</button>
+            className={`w-7 h-7 grid place-items-center hover:bg-[var(--color-paper)] ${a.theme === th.v ? "bg-[var(--color-paper)] text-[var(--color-navy)]" : ""}`}
+          ><Icon name={th.icon} size={16} /></button>
         ))}
       </div>
 
@@ -52,14 +53,6 @@ export function AccessibilityBar() {
         title={t("underline")}
         className={`px-2 h-7 border border-[var(--color-rule)] rounded text-xs hover:bg-[var(--color-paper)] ${a.underline ? "bg-[var(--color-paper)] font-bold underline" : "bg-white"}`}
       >U</button>
-
-      <button
-        onClick={() => a.setLang(a.lang === "en" ? "hi" : "en")}
-        className="px-2 h-7 bg-white border border-[var(--color-rule)] rounded text-xs hover:bg-[var(--color-paper)]"
-        aria-label="Toggle language"
-      >
-        {t("languageLabel")}
-      </button>
     </div>
   );
 }

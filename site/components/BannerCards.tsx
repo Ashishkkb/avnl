@@ -22,7 +22,7 @@ const BANNERS: Banner[] = [
     href: "/offerings/msme",
     title: "AVNL Vendor Meet 2026",
     sub: "MSME empanelment · Technology transfer · Skill development",
-    gradient: "from-[#0B2545] to-[#13315C]",
+    gradient: "from-[var(--color-eagle-green)] to-[var(--color-wintergreen)]",
     accent: "#FFD166",
     badge: "MSME Initiative",
   },

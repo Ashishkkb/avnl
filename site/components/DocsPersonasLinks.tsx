@@ -31,7 +31,7 @@ const PERSONAS = [
     href: "/connect/citizen",
     accent: "#E0EAFF",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F5757" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
         <circle cx="12" cy="8" r="3.5" />
         <path d="M4 20c.6-3.8 3.6-6 8-6s7.4 2.2 8 6" />
         <path d="M12 11.5v1.5" />
@@ -43,7 +43,7 @@ const PERSONAS = [
     href: "/connect/ovra",
     accent: "#FFE9D6",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F5757" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
         <path d="M3 10l9-6 9 6v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <path d="M9 21V12h6v9" />
         <path d="M12 7v3" />
@@ -55,7 +55,7 @@ const PERSONAS = [
     href: "/products",
     accent: "#D6F0E3",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F5757" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
         <path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z" />
         <path d="M9 12l2 2 4-4" />
       </svg>
@@ -66,7 +66,7 @@ const PERSONAS = [
     href: "/offerings/training",
     accent: "#E0EAFF",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F5757" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
         <path d="M9 3v8.5a3 3 0 0 1-1 2.3l-3 2.6c-1.4 1.2-.6 3.6 1.3 3.6h11.4c1.9 0 2.7-2.4 1.3-3.6l-3-2.6a3 3 0 0 1-1-2.3V3" />
         <path d="M8 3h8" />
         <path d="M9 13h6" />
@@ -78,7 +78,7 @@ const PERSONAS = [
     href: "/offerings/make-in-india",
     accent: "#FFF2CC",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F5757" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
         <rect x="3" y="11" width="6" height="10" rx="0.5" />
         <rect x="15" y="11" width="6" height="10" rx="0.5" />
         <path d="M9 11l3-4 3 4" />
@@ -92,7 +92,7 @@ const PERSONAS = [
     href: "/media/photos",
     accent: "#FCE4EC",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F5757" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-24 h-24">
         <rect x="3" y="6" width="14" height="12" rx="2" />
         <path d="M17 10l4-2.5v9L17 14" />
       </svg>

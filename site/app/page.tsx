@@ -8,6 +8,7 @@ import { SocialFeed } from "@/components/SocialFeed";
 import { PartnerStrip } from "@/components/PartnerStrip";
 import { MediaShowcase } from "@/components/MediaShowcase";
 import { DocsPersonasLinks } from "@/components/DocsPersonasLinks";
+import { Icon } from "@/components/icons";
 
 export default function Home() {
   return (
@@ -23,9 +24,9 @@ export default function Home() {
           <div className="flex-1 overflow-hidden">
             <div className="marquee whitespace-nowrap">
               {[...ANNOUNCEMENTS, ...ANNOUNCEMENTS].map((a, i) => (
-                <a key={i} href={a.href} className="text-sm text-[#222] hover:text-[var(--color-navy)]">
-                  <span className="text-[var(--color-saffron)] font-semibold mr-2">●</span>
-                  <span className="font-medium">{a.badge}:</span> {a.title}
+                <a key={i} href={a.href} className="text-sm text-[#222] hover:text-[var(--color-navy)] inline-flex items-center">
+                  <Icon name="dot" size={10} className="text-[var(--color-saffron)] mr-2" />
+                  <span className="font-medium">{a.badge}:</span>&nbsp;{a.title}
                 </a>
               ))}
             </div>
@@ -42,7 +43,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 py-14 grid md:grid-cols-3 gap-10">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-8 h-8 grid place-items-center rounded bg-[var(--color-navy)]/10 text-[var(--color-navy)]">◈</span>
+            <span className="w-8 h-8 grid place-items-center rounded bg-[var(--color-navy)]/10 text-[var(--color-navy)]"><Icon name="diamond" size={18} fill={1} /></span>
             <h2 className="text-2xl font-bold text-[var(--color-navy)]">About AVNL</h2>
           </div>
           <p className="mt-3 text-[#333] leading-relaxed">
@@ -60,43 +61,9 @@ export default function Home() {
           </p>
           <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-3">
             {[
-              {
-                label: "Our Team",
-                href: "/leadership",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                    <circle cx="9" cy="8" r="3.2" />
-                    <path d="M2.8 19c.4-3 3.1-4.8 6.2-4.8s5.8 1.8 6.2 4.8" />
-                    <circle cx="17" cy="9" r="2.6" />
-                    <path d="M14.8 16.5c.6-1.6 2-2.4 3.7-2.4 1.8 0 3.1 1 3.5 2.4" />
-                  </svg>
-                ),
-              },
-              {
-                label: "Our Units",
-                href: "/units",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                    <path d="M3 21V10l5 3V10l5 3V8l8 4v9z" />
-                    <path d="M3 21h18" />
-                    <path d="M9 17h2M14 17h2" />
-                    <path d="M18 7V4l1.5-1.5L21 4v3" />
-                  </svg>
-                ),
-              },
-              {
-                label: "Our Performance",
-                href: "/about/performance",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                    <path d="M3 20h18" />
-                    <rect x="5" y="13" width="3" height="6" rx="0.5" />
-                    <rect x="10.5" y="9" width="3" height="10" rx="0.5" />
-                    <rect x="16" y="5" width="3" height="14" rx="0.5" />
-                    <path d="M4 9l5-4 4 3 6-5" />
-                  </svg>
-                ),
-              },
+              { label: "Our Team", href: "/leadership", icon: "users" as const },
+              { label: "Our Units", href: "/units", icon: "factory" as const },
+              { label: "Our Performance", href: "/about/performance", icon: "chart" as const },
             ].map((c) => (
               <Link
                 key={c.label}
@@ -104,7 +71,7 @@ export default function Home() {
                 className="group bg-white border border-[var(--color-rule)] rounded-md px-4 py-3.5 flex items-center gap-3 hover:border-[var(--color-saffron)] hover:shadow-sm transition lift"
               >
                 <span className="w-10 h-10 rounded-md bg-[var(--color-paper)] grid place-items-center text-[var(--color-navy)] group-hover:bg-[var(--color-saffron)]/15 group-hover:text-[var(--color-saffron)] transition">
-                  {c.icon}
+                  <Icon name={c.icon} size={22} />
                 </span>
                 <span className="font-semibold text-[var(--color-navy)] text-sm">{c.label}</span>
               </Link>
@@ -159,7 +126,7 @@ export default function Home() {
                 <div className="p-5">
                   <h3 className="font-semibold text-[var(--color-navy)] text-lg">{u.name}</h3>
                   <p className="text-xs text-[#666] mt-0.5 inline-flex items-center gap-1">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 text-[var(--color-saffron)]"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                    <Icon name="location" size={14} className="text-[var(--color-saffron)]" />
                     {u.location}
                   </p>
                   <p className="text-sm text-[#333] mt-3 line-clamp-3">{u.blurb}</p>
@@ -207,26 +174,17 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {KEY_OFFERINGS.map((k, idx) => {
-              const icons = [
-                // Make in India, lion-ish star burst
-                <svg key="m" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/><circle cx="12" cy="12" r="4"/></svg>,
-                // MSME, handshake
-                <svg key="h" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><path d="M3 12l4-4 3 3 4-4 4 4 3-3"/><path d="M7 14l3 3 2-2 3 3"/><path d="M3 17V8M21 17V8"/></svg>,
-                // OVRA, document with checkmark
-                <svg key="d" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 14l2 2 4-4"/></svg>,
-                // Training, graduation cap
-                <svg key="g" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v5"/></svg>,
-              ];
+              const icons = ["spark", "handshake", "vendor", "cap"] as const;
               return (
                 <Link key={k.title} href={k.href} className="group bg-white border border-[var(--color-rule)] rounded-lg p-6 lift hover:border-[var(--color-saffron)]">
                   <div className="w-11 h-11 rounded-lg bg-[var(--color-navy)] text-white grid place-items-center mb-4 group-hover:bg-[var(--color-saffron)] group-hover:text-[var(--color-navy)] transition">
-                    {icons[idx % icons.length]}
+                    <Icon name={icons[idx % icons.length]} size={24} />
                   </div>
                   <h3 className="font-semibold text-[var(--color-navy)]">{k.title}</h3>
                   <p className="text-sm text-[#444] mt-2 leading-relaxed">{k.body}</p>
                   <span className="inline-flex items-center gap-1 mt-3 text-sm font-medium text-[var(--color-navy)] group-hover:text-[var(--color-saffron)]">
                     Learn more
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <Icon name="arrow-right" size={16} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>
               );

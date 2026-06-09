@@ -16,6 +16,14 @@ type Ctx = {
   setUnderline: (b: boolean) => void;
   imagesHidden: boolean;
   setImagesHidden: (b: boolean) => void;
+  invert: boolean;
+  setInvert: (b: boolean) => void;
+  saturation: boolean;
+  setSaturation: (b: boolean) => void;
+  bigCursor: boolean;
+  setBigCursor: (b: boolean) => void;
+  panelOpen: boolean;
+  setPanelOpen: (b: boolean) => void;
   reset: () => void;
 };
 
@@ -27,6 +35,10 @@ export function A11yProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
   const [underline, setUnderline] = useState(false);
   const [imagesHidden, setImagesHidden] = useState(false);
+  const [invert, setInvert] = useState(false);
+  const [saturation, setSaturation] = useState(false);
+  const [bigCursor, setBigCursor] = useState(false);
+  const [panelOpen, setPanelOpen] = useState(false);
 
   // Restore from localStorage on mount
   useEffect(() => {
@@ -39,6 +51,9 @@ export function A11yProvider({ children }: { children: React.ReactNode }) {
         if (v.theme) setTheme(v.theme);
         setUnderline(!!v.underline);
         setImagesHidden(!!v.imagesHidden);
+        setInvert(!!v.invert);
+        setSaturation(!!v.saturation);
+        setBigCursor(!!v.bigCursor);
       }
     } catch {}
   }, []);
@@ -52,13 +67,16 @@ export function A11yProvider({ children }: { children: React.ReactNode }) {
     html.setAttribute("data-lang", lang);
     html.setAttribute("data-underline", underline ? "on" : "off");
     html.setAttribute("data-hide-images", imagesHidden ? "on" : "off");
+    html.setAttribute("data-invert", invert ? "on" : "off");
+    html.setAttribute("data-saturation", saturation ? "gray" : "off");
+    html.setAttribute("data-cursor", bigCursor ? "big" : "default");
     try {
       localStorage.setItem(
         "avnl-a11y",
-        JSON.stringify({ fontStep, lang, theme, underline, imagesHidden })
+        JSON.stringify({ fontStep, lang, theme, underline, imagesHidden, invert, saturation, bigCursor })
       );
     } catch {}
-  }, [fontStep, lang, theme, underline, imagesHidden]);
+  }, [fontStep, lang, theme, underline, imagesHidden, invert, saturation, bigCursor]);
 
   const reset = () => {
     setFontStep(0);
@@ -66,6 +84,9 @@ export function A11yProvider({ children }: { children: React.ReactNode }) {
     setTheme("light");
     setUnderline(false);
     setImagesHidden(false);
+    setInvert(false);
+    setSaturation(false);
+    setBigCursor(false);
   };
 
   const value = useMemo<Ctx>(
@@ -75,9 +96,13 @@ export function A11yProvider({ children }: { children: React.ReactNode }) {
       theme, setTheme,
       underline, setUnderline,
       imagesHidden, setImagesHidden,
+      invert, setInvert,
+      saturation, setSaturation,
+      bigCursor, setBigCursor,
+      panelOpen, setPanelOpen,
       reset,
     }),
-    [fontStep, lang, theme, underline, imagesHidden]
+    [fontStep, lang, theme, underline, imagesHidden, invert, saturation, bigCursor, panelOpen]
   );
 
   return <A11yCtx.Provider value={value}>{children}</A11yCtx.Provider>;
@@ -117,6 +142,15 @@ export const DICT = {
     vendor: "Vendor Registration (OVRA)",
     tenders: "Active Tenders",
     welcomeTo: "Welcome to",
+    a11yControls: "Accessibility Controls",
+    darkContrast: "Dark Contrast",
+    invert: "Invert",
+    saturation: "Saturation",
+    textIncrease: "Text Size Increase",
+    textDecrease: "Text Size Decrease",
+    highlightLinks: "Highlight Links",
+    bigCursor: "Default Cursor",
+    close: "Close",
   },
   hi: {
     goi: "भारत सरकार",
@@ -139,5 +173,14 @@ export const DICT = {
     vendor: "विक्रेता पंजीकरण (OVRA)",
     tenders: "सक्रिय निविदाएँ",
     welcomeTo: "स्वागत है",
+    a11yControls: "सुगम्यता नियंत्रण",
+    darkContrast: "गहरा कंट्रास्ट",
+    invert: "रंग उलटें",
+    saturation: "संतृप्ति",
+    textIncrease: "टेक्स्ट आकार बढ़ाएँ",
+    textDecrease: "टेक्स्ट आकार घटाएँ",
+    highlightLinks: "लिंक हाइलाइट करें",
+    bigCursor: "डिफ़ॉल्ट कर्सर",
+    close: "बंद करें",
   },
 } as const;

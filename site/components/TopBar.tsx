@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useT } from "./A11yProvider";
-import { AccessibilityBar } from "./AccessibilityBar";
 
 export function TopBar() {
   const t = useT();
@@ -15,9 +14,9 @@ export function TopBar() {
             <span className="text-[#888]">·</span>
             <span>{t("mod")}</span>
           </div>
-          <div className="flex items-center gap-3">
-            <Link href="/connect/contact" className="hidden md:inline hover:underline">{t("contact")}</Link>
-            <AccessibilityBar />
+          <div className="flex items-center gap-4">
+            <a href="#main" className="hidden md:inline hover:underline">{t("skip")}</a>
+            <Link href="/connect/contact" className="hover:underline">{t("contact")}</Link>
           </div>
         </div>
       </div>

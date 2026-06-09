@@ -3,18 +3,56 @@
 @theme {
   --color-saffron: #FF9933;
   --color-india-green: #138808;
-  --color-navy: #0B2545;
-  --color-navy-light: #13315C;
+  /* Primary brand remapped to the DBIM Forest Green color mode so the whole
+     site (header, footer, nav, buttons, sections) shares one green identity.
+     Kept under the `navy` names so existing var(--color-navy) usages update. */
+  --color-navy: #0F5757;        /* wintergreen — primary */
+  --color-navy-light: #2D8686;  /* powder blue — gradients/hover */
   --color-gold: #C9A227;
   --color-ink: #1A1A1A;
   --color-paper: #F5F6F8;
   --color-rule: #E5E7EB;
+
+  /* DBIM design-system palette (Forest Green color mode) — used for section
+     banners and the section sub-navigation bar, matching the DBIM templates. */
+  --color-deep-blue: #1D0A69;
+  --color-eagle-green: #0B4141;
+  --color-wintergreen: #0F5757;
+  --color-powder-blue: #2D8686;
+  --color-columbia: #75BDBD;
+  --color-aqua: #A6D9D9;
+  --color-aqua-bg: #D9F2F2;
+
   --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
   --font-serif: ui-serif, "Source Serif Pro", Georgia, serif;
 }
 
 html { scroll-behavior: smooth; }
 body { color: var(--color-ink); background: #fff; font-family: var(--font-sans); }
+
+/* DBIM typography: Noto Sans for Latin, Noto Sans Devanagari for Hindi/Rajbhasha */
+:root {
+  --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+}
+html[lang="hi"] body, [lang="hi"] {
+  font-family: var(--font-noto-devanagari), var(--font-noto-sans), system-ui, sans-serif;
+}
+
+/* DBIM iconography base, Material Symbols Outlined */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga";
+}
 
 /* Theme variants applied to <html data-theme> */
 html[data-theme="dark"] {
@@ -49,6 +87,20 @@ html[data-underline="on"] a:not(.no-underline) { text-decoration: underline !imp
 /* Hide-images toggle (a11y feature on gov sites) */
 html[data-hide-images="on"] img,
 html[data-hide-images="on"] [style*="background-image"] { visibility: hidden !important; }
+
+/* Invert colours (stacks above grayscale via the html element) */
+html[data-invert="on"] { filter: invert(1) hue-rotate(180deg); background: #fff; }
+html[data-invert="on"] img,
+html[data-invert="on"] video,
+html[data-invert="on"] [style*="background-image"] { filter: invert(1) hue-rotate(180deg); }
+
+/* Saturation / grayscale toggle (applied to body so it stacks under invert) */
+html[data-saturation="gray"] body { filter: grayscale(1); }
+
+/* Big cursor toggle */
+html[data-cursor="big"], html[data-cursor="big"] * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'><path d='M4 2l7 18 2.5-7L20 11z' fill='white' stroke='black' stroke-width='1.5' stroke-linejoin='round'/></svg>") 4 2, auto !important;
+}
 
 .tricolor-bar {
   height: 3px;
